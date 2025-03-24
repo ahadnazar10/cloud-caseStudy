@@ -6,9 +6,13 @@ const AdminGrievanceDashboard = () => {
 
   useEffect(() => {
     const fetchGrievances = async () => {
+<<<<<<< HEAD
       const response = await fetch(
         "http://ec2-54-89-96-159.compute-1.amazonaws.com:9000/grievances"
       );
+=======
+      const response = await fetch("http://ec2-54-89-96-159.compute-1.amazonaws.com:9000/grievances");
+>>>>>>> d74e29f (upfdated home)
       const data = await response.json();
       setGrievances(data);
     };

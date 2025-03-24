@@ -46,6 +46,7 @@ const UserGrievanceForm = () => {
     }
 
     try {
+<<<<<<< HEAD
       const response = await fetch(
         "http://ec2-54-89-96-159.compute-1.amazonaws.com:9000/grievances/submit",
         {
@@ -54,6 +55,13 @@ const UserGrievanceForm = () => {
           body: JSON.stringify({ userId, title, description, severity }),
         }
       );
+=======
+      const response = await fetch("http://ec2-54-89-96-159.compute-1.amazonaws.com:9000/grievances/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, title, description, severity }),
+      });
+>>>>>>> d74e29f (upfdated home)
       const data = await response.json();
 
       if (response.status === 201) {

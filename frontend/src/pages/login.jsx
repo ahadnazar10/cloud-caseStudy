@@ -18,6 +18,7 @@ function Login() {
     const password = event.target.password.value;
 
     try {
+<<<<<<< HEAD
       const response = await fetch(
         "http://ec2-54-89-96-159.compute-1.amazonaws.com:9000/auth/login",
         {
@@ -28,6 +29,15 @@ function Login() {
           body: JSON.stringify({ email, password }),
         }
       );
+=======
+      const response = await fetch("http://ec2-54-89-96-159.compute-1.amazonaws.com:9000/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+>>>>>>> d74e29f (upfdated home)
 
       const data = await response.json();
 
@@ -70,6 +80,7 @@ function Login() {
     const password = event.target.password.value;
 
     try {
+<<<<<<< HEAD
       const response = await fetch(
         "http://ec2-54-89-96-159.compute-1.amazonaws.com:9000/auth/register",
         {
@@ -80,6 +91,15 @@ function Login() {
           body: JSON.stringify({ name, email, password }),
         }
       );
+=======
+      const response = await fetch("http://ec2-54-89-96-159.compute-1.amazonaws.com:9000/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, password }),
+      });
+>>>>>>> d74e29f (upfdated home)
 
       const data = await response.json();
 

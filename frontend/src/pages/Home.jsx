@@ -7,9 +7,11 @@ import {
   TrafficLayer,
   TransitLayer,
 } from "@react-google-maps/api";
-import videovg from "../assets/background.mp4";
-import amritaimage from "../assets/amrita.png";
 import Navbar from "../compoents/ui/Navbar";
+
+// Use S3-hosted assets instead of local imports
+const videovg = "https://my-app-asset2.s3.us-east-1.amazonaws.com/assets/background.mp4";
+const amritaimage = "https://my-app-asset2.s3.us-east-1.amazonaws.com/assets/amrita.png";
 
 function Home() {
   const { isLoaded } = useLoadScript({
@@ -21,20 +23,8 @@ function Home() {
   // Key locations in the city
   const locations = [
     { id: 1, name: "City Hall", lat: 10.891, lng: 76.908, type: "government" },
-    {
-      id: 2,
-      name: "Smart Bus Stop",
-      lat: 10.892,
-      lng: 76.909,
-      type: "transport",
-    },
-    {
-      id: 3,
-      name: "Fire Station",
-      lat: 10.8905,
-      lng: 76.9075,
-      type: "emergency",
-    },
+    { id: 2, name: "Smart Bus Stop", lat: 10.892, lng: 76.909, type: "transport" },
+    { id: 3, name: "Fire Station", lat: 10.8905, lng: 76.9075, type: "emergency" },
   ];
 
   const [selectedPlace, setSelectedPlace] = useState(null);
@@ -71,31 +61,17 @@ function Home() {
       </section>
 
       {/* Google Map Section */}
-      <section
-        className="map-section"
-        style={{ width: "100%", height: "90vh" }}
-      >
+      <section className="map-section" style={{ width: "100%", height: "90vh" }}>
         {isLoaded ? (
-          <GoogleMap
-            center={center}
-            zoom={13}
-            mapContainerStyle={{ width: "100%", height: "100%" }}
-          >
+          <GoogleMap center={center} zoom={13} mapContainerStyle={{ width: "100%", height: "100%" }}>
             {/* Markers for Key Locations */}
             {locations.map((place) => (
-              <MarkerF
-                key={place.id}
-                position={{ lat: place.lat, lng: place.lng }}
-                onClick={() => setSelectedPlace(place)}
-              />
+              <MarkerF key={place.id} position={{ lat: place.lat, lng: place.lng }} onClick={() => setSelectedPlace(place)} />
             ))}
 
             {/* Info Window for selected location */}
             {selectedPlace && (
-              <InfoWindowF
-                position={{ lat: selectedPlace.lat, lng: selectedPlace.lng }}
-                onCloseClick={() => setSelectedPlace(null)}
-              >
+              <InfoWindowF position={{ lat: selectedPlace.lat, lng: selectedPlace.lng }} onCloseClick={() => setSelectedPlace(null)}>
                 <div>
                   <h3>{selectedPlace.name}</h3>
                   <p>Type: {selectedPlace.type}</p>

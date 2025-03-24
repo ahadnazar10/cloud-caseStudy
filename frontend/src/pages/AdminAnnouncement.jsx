@@ -41,6 +41,7 @@ const AdminAnnouncement = () => {
     );
 
     if (isConfirmed) {
+<<<<<<< HEAD
       fetch(
         "http://ec2-54-89-96-159.compute-1.amazonaws.com:9000/announcements/add",
         {
@@ -51,6 +52,15 @@ const AdminAnnouncement = () => {
           body: JSON.stringify(newAnnouncement),
         }
       )
+=======
+      fetch("http://ec2-54-89-96-159.compute-1.amazonaws.com:9000/announcements/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newAnnouncement),
+      })
+>>>>>>> d74e29f (upfdated home)
         .then((res) => res.json())
         .then((data) => {
           alert("Announcement added successfully!");
@@ -73,12 +83,18 @@ const AdminAnnouncement = () => {
     );
 
     if (isConfirmed) {
+<<<<<<< HEAD
       fetch(
         `http://ec2-54-89-96-159.compute-1.amazonaws.com:9000/announcements/delete/${id}`,
         {
           method: "DELETE",
         }
       )
+=======
+      fetch(`http://ec2-54-89-96-159.compute-1.amazonaws.com:9000/announcements/delete/${id}`, {
+        method: "DELETE",
+      })
+>>>>>>> d74e29f (upfdated home)
         .then((res) => res.json())
         .then(() => {
           alert("Announcement deleted successfully!");
