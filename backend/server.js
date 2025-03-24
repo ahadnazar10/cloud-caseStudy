@@ -48,6 +48,7 @@ app.get('/', (req, res) => {
 //   console.log(`Server running at http://localhost:${port}`);
 // });
 
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const connectDB = require("./config/db");
@@ -56,8 +57,13 @@ const authRoutes = require("./routes/auth");
 const app = express();
 const port = 9000;
 
-// Enable CORS
-app.use(cors());
+// Enable CORS with specific origin
+app.use(
+  cors({
+    origin: "https://nice-mushroom-062f4ec10.6.azurestaticapps.net", // Updated to match the deployed URL
+    credentials: true, // If using cookies or sessions for authentication
+  })
+);
 app.use(express.json());
 
 connectDB();

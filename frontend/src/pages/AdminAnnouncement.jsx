@@ -13,7 +13,7 @@ const AdminAnnouncement = () => {
 
   // ✅ Fetch Announcements from Backend
   useEffect(() => {
-    fetch("http://localhost:9000/announcements")
+    fetch("http://ec2-54-89-96-159.compute-1.amazonaws.com:9000/announcements")
       .then((res) => res.json())
       .then((data) => setAnnouncements(data))
       .catch((error) => console.error("Error fetching announcements:", error));
@@ -41,13 +41,16 @@ const AdminAnnouncement = () => {
     );
 
     if (isConfirmed) {
-      fetch("http://localhost:9000/announcements/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newAnnouncement),
-      })
+      fetch(
+        "http://ec2-54-89-96-159.compute-1.amazonaws.com:9000/announcements/add",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newAnnouncement),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           alert("Announcement added successfully!");
@@ -70,9 +73,12 @@ const AdminAnnouncement = () => {
     );
 
     if (isConfirmed) {
-      fetch(`http://localhost:9000/announcements/delete/${id}`, {
-        method: "DELETE",
-      })
+      fetch(
+        `http://ec2-54-89-96-159.compute-1.amazonaws.com:9000/announcements/delete/${id}`,
+        {
+          method: "DELETE",
+        }
+      )
         .then((res) => res.json())
         .then(() => {
           alert("Announcement deleted successfully!");

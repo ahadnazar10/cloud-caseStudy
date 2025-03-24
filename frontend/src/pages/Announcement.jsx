@@ -7,7 +7,7 @@ const Announcement = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:9000/announcements")
+    fetch("http://ec2-54-89-96-159.compute-1.amazonaws.com:9000/announcements")
       .then((res) => res.json())
       .then((data) => {
         setAnnouncements(data);
