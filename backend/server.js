@@ -57,11 +57,30 @@ const authRoutes = require("./routes/auth");
 const app = express();
 const port = 9000;
 
-// Enable CORS with specific origin
+// Define allowed origins (including the Azure Static Web App domain)
+const allowedOrigins = [
+  "https://nice-mushroom-0624ec10c.6.azurestaticapps.net",
+  "http://localhost:3000", // Add localhost for development, if needed
+];
+
+// Configure CORS to allow specific origins dynamically
 app.use(
   cors({
-    origin: "https://nice-mushroom-062f4ec10.6.azurestaticapps.net", // Updated to match the deployed URL
-    credentials: true, // If using cookies or sessions for authentication
+    origin: (origin, callback) => {
+      // Allow requests with no origin (e.g., mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+
+      // Allow requests from the specified origins
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      // Allow all other origins (default behavior)
+      // Note: When credentials: true is set, we can't use '*' in the response header.
+      // Instead, we reflect the request's origin back.
+      return callback(null, origin);
+    },
+    credentials: true, // Required for cookies or sessions
   })
 );
 app.use(express.json());
