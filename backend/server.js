@@ -59,7 +59,7 @@ const port = 9000;
 
 // Define allowed origins (including the Azure Static Web App domain)
 const allowedOrigins = [
-  "https://nice-mushroom-0624ec10c.6.azurestaticapps.net",
+  "https://thankful-stone-066704310.6.azurestaticapps.net",
   "http://localhost:3000", // Add localhost for development, if needed
 ];
 
